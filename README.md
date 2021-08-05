@@ -1,4 +1,7 @@
-## A simple grocery bud application.
+## A simple Todo application.
 
+---
 
-Where user can add desire items , edit item, update item , delete item and clear all item at one place as well .
+> - user will able to add desire items ,
+> - user can delete item ,
+> - user can filter data by search .
