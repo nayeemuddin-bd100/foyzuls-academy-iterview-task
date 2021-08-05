@@ -9,6 +9,7 @@ function Home() {
     const { items } = useContext(GlobalContext);
 
     const [filterData, setFilterData] = useState([]);
+
     useEffect(() => {
         setFilterData(items);
     }, [items]);
