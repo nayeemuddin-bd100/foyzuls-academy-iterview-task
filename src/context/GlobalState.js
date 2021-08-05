@@ -1,27 +1,24 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer, useState } from 'react';
 import Items from '../data/Items';
 import AppReducer from './AppReducer';
 
 const initialState = {
     items: Items,
-    filterData: [],
 };
 
 export const GlobalContext = createContext();
 
 function GlobalProvider({ children }) {
     const [state, dispatch] = useReducer(AppReducer, initialState);
+    const [value, setValue] = useState({
+        title: '',
+        id: '',
+        completed: false,
+    });
 
     const handleAdd = (item) => {
         dispatch({
             type: 'ADD_TODO',
-            payload: item,
-        });
-    };
-
-    const addSearchItem = (item) => {
-        dispatch({
-            type: 'ADD_SEARCH_ITEM',
             payload: item,
         });
     };
@@ -38,8 +35,9 @@ function GlobalProvider({ children }) {
             value={{
                 items: state.items,
                 filterData: state.filterData,
+                value,
+                setValue,
                 handleAdd,
-                addSearchItem,
                 handleDelete,
             }}
         >

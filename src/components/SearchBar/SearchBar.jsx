@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 
-function SearchBar({ setValue, filterTitle, setFilterTitle }) {
-    const { addSearchItem } = useContext(GlobalContext);
+function SearchBar({ setFilterTitle, filterTitle, setFilterData }) {
+    const { items } = useContext(GlobalContext);
 
     const handleSearch = (e) => {
-        const searchValue = e.target.value.toLowerCase();
-        addSearchItem(searchValue);
         setFilterTitle(e.target.value);
-        setValue({ title: '', id: '', completed: false });
+        const searchTermToLowerCase = e.target.value.toLowerCase();
+        const filterData = items.filter((item) =>
+            item.title.toLowerCase().includes(searchTermToLowerCase)
+        );
+        setFilterData(filterData);
     };
     return (
         <div className="edit-bar">

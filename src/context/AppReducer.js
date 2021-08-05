@@ -5,19 +5,10 @@ const AppReducer = (state, action) => {
                 ...state,
                 items: [...state.items, action.payload],
             };
-        case 'ADD_SEARCH_ITEM': {
-            const searchData = state.items.filter((item) => {
-                const titleToLowerCase = item.title.toLowerCase();
-                return titleToLowerCase.includes(action.payload);
-            });
 
-            return {
-                ...state,
-                filterData: searchData,
-            };
-        }
         case 'DELETE_TODO': {
             const filterData = state.items.filter((v) => v.id !== action.payload);
+            console.log(filterData);
             return {
                 ...state,
                 items: filterData,

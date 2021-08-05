@@ -2,8 +2,13 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 import './Item.css';
 
-function Item({ id, title }) {
+function Item({ id, title, setFilterTitle }) {
     const { handleDelete } = useContext(GlobalContext);
+
+    const deleteItem = () => {
+        handleDelete(id);
+        setFilterTitle({ title: '' });
+    };
 
     return (
         <>
@@ -13,7 +18,7 @@ function Item({ id, title }) {
                 <div className="icon-view">
                     <i
                         aria-hidden="true"
-                        onClick={() => handleDelete(id)}
+                        onClick={() => deleteItem()}
                         className="far fa-trash-alt"
                     />
                 </div>
