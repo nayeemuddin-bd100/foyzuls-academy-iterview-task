@@ -37,6 +37,7 @@
 }
 .edit-bar {
   display: flex;
+  margin-bottom: 10px;
 }
 
 .edit-bar input {
