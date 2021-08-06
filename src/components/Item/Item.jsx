@@ -27,4 +27,6 @@ function Item({ id, title, setFilterTitle }) {
     );
 }
 
-export default Item;
+// Using React.memo to prevent re-render when type anything in input box
+export default React.memo(Item);
+// export default Item;
