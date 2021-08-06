@@ -1,11 +1,11 @@
-import React, { Suspense, useContext, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 import AddTodo from '../AddTodo/AddTodo';
 import SearchBar from '../SearchBar/SearchBar';
 import './Home.css';
 
 // set lazy loading for data load dynamically
-// const Item = lazy(() => import('../Item/Item'));
+const Item = lazy(() => import('../Item/Item'));
 
 function Home() {
     const { items } = useContext(GlobalContext);
